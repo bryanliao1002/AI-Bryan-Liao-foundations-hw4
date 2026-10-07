@@ -1,0 +1,25 @@
+# Local-only course data (database + product images)
+data/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Generated display copies of product images (backend/images.py)
+.cache/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / Vite
+node_modules/
+dist/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

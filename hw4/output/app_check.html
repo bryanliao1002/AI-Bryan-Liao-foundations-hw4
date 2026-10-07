@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Customs — Live App Check</title>
+    <style>
+      :root {
+        --blue: #00356b;
+        --blue-50: #eef3fa;
+        --ink: #0e1a2b;
+        --text: #2b3442;
+        --muted: #687182;
+        --line: #e6e2da;
+        --paper: #faf8f4;
+        --success: #1f7a4d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.55;
+        color: var(--text);
+        background: var(--paper);
+      }
+      header {
+        background: var(--blue);
+        color: #dbe5f2;
+        padding: 2.5rem 1.5rem;
+      }
+      header h1 {
+        margin: 0 0 0.4rem;
+        color: #fff;
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 2rem;
+      }
+      header p {
+        margin: 0;
+      }
+      main {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+      }
+      nav.toc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      nav.toc a {
+        color: var(--blue);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.35rem 0.9rem;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      section.check {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1.75rem;
+        margin-bottom: 2rem;
+      }
+      .check h2 {
+        margin: 0 0 0.25rem;
+        color: var(--ink);
+        font-family: Georgia, 'Times New Roman', serif;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--blue);
+        margin-bottom: 0.5rem;
+      }
+      .prompt {
+        display: inline-block;
+        background: var(--blue);
+        color: #fff;
+        border-radius: 12px;
+        padding: 0.35rem 0.8rem;
+        font-size: 0.92rem;
+      }
+      figure {
+        margin: 1.25rem 0 0.75rem;
+      }
+      figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(14, 26, 43, 0.08);
+      }
+      .missing {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        min-height: 220px;
+        border: 2px dashed var(--line);
+        border-radius: 12px;
+        color: var(--muted);
+        text-align: center;
+        padding: 1rem;
+      }
+      figcaption {
+        margin-top: 0.75rem;
+        font-size: 1rem;
+        color: var(--ink);
+      }
+      table {
+        border-collapse: collapse;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+      }
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 0.35rem 0.7rem;
+        text-align: left;
+      }
+      th {
+        background: var(--blue-50);
+        color: var(--ink);
+      }
+      td.hl {
+        background: #e8f5ee;
+        color: var(--success);
+        font-weight: 700;
+      }
+      details {
+        margin-top: 0.75rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      summary {
+        cursor: pointer;
+        color: var(--blue);
+      }
+      code {
+        background: var(--blue-50);
+        border-radius: 4px;
+        padding: 0 0.3rem;
+      }
+      footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Campus Customs — Live App Check</h1>
+      <p>Screenshots from the running website (React + Vite front end, FastAPI + PydanticAI back end, local <code>campus_customs.db</code>).</p>
+    </header>
+
+    <main>
+      <nav class="toc" aria-label="Checks">
+        <a href="#inventory">1 · Chatbot inventory &amp; price check</a>
+        <a href="#cards">2 · Dynamic product cards</a>
+        <a href="#usability">3 · Usability improvement</a>
+      </nav>
+
+      <!-- Check 1 ------------------------------------------------------------>
+      <section class="check" id="inventory">
+        <span class="tag">Check 1</span>
+        <h2>Chatbot checks inventory and price from the database</h2>
+        <p>
+          On the Basic Hoodie Big Yale product page, asked:
+          <span class="prompt">How many Basic Hoodie Big Yale do you have in medium, and how much is it?</span>
+        </p>
+        <figure>
+          <img
+            src="app_check_images/inventory.png"
+            alt="Chat panel answering that the Basic Hoodie Big Yale has 5 left in medium at $68.00, with a 'Prices verified with our store database' badge"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="missing">Screenshot not added yet: save it as <code>output/app_check_images/inventory.png</code></div>
+          <figcaption>
+            The chatbot replies that the Basic Hoodie Big Yale has <strong>5 left in medium</strong> and costs
+            <strong>$68.00</strong>, matching the <code>inventory</code> and <code>catalogue</code> tables and the
+            product page behind it (M "5 left", $68.00). The green "Price verified with our store database" line shows
+            the backend checked the price before the reply was shown.
+          </figcaption>
+        </figure>
+        <details>
+          <summary>Database values for this product (for comparison)</summary>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>catalogue.price</th>
+                <th>XS</th>
+                <th>S</th>
+                <th>M</th>
+                <th>L</th>
+                <th>XL</th>
+                <th>XXL</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Basic Hoodie Big Yale</td>
+                <td class="hl">$68.00</td>
+                <td>15</td>
+                <td>5</td>
+                <td class="hl">5</td>
+                <td>8</td>
+                <td>2</td>
+                <td>25</td>
+              </tr>
+            </tbody>
+          </table>
+        </details>
+      </section>
+
+      <!-- Check 2 ------------------------------------------------------------>
+      <section class="check" id="cards">
+        <span class="tag">Check 2</span>
+        <h2>Dynamic product cards after a category question</h2>
+        <p>Asked: <span class="prompt">What hoodies do you have?</span></p>
+        <figure>
+          <img
+            src="app_check_images/hoodie_cards.png"
+            alt="'From your shopping assistant' section on the page showing hoodie product cards with images, names, prices and short descriptions"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="missing">Screenshot not added yet: save it as <code>output/app_check_images/hoodie_cards.png</code></div>
+          <figcaption>
+            The chatbot says there are 27 hoodies, and the page updates with a
+            <strong>"From your shopping assistant — Hoodies, 27 products"</strong> section. Each card shows the product
+            image, type, name, short description, price and size availability (e.g. Basic Hoodie Big Yale $68.00,
+            Brooks Brothers Double Knit Full Zip Hoodie Yale $88.00).
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- Check 3 ------------------------------------------------------------>
+      <section class="check" id="usability">
+        <span class="tag">Check 3</span>
+        <h2>Usability improvement: shop filters and sorting</h2>
+        <p>
+          On the <strong>Shop</strong> page: <span class="prompt">Crewnecks</span> chip → <strong>In stock in size: M</strong>
+          → <strong>Sort by: Price: low to high</strong>
+        </p>
+        <figure>
+          <img
+            src="app_check_images/usability_filters.png"
+            alt="Shop page with the Crewnecks category chip active, size M and price low-to-high selected, showing 21 items"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="missing">
+            Screenshot not added yet: save it as <code>output/app_check_images/usability_filters.png</code>
+          </div>
+          <figcaption>
+            Problem 9 filters and sorting: the Crewnecks chip, "In stock in size: M" and "Price: low to high" narrow
+            102 products to <strong>"21 items · Crewnecks · in stock in M"</strong>, the crewnecks that actually have a
+            medium available. The filters are also saved in the URL, and the "Low stock" badge comes from real inventory.
+          </figcaption>
+        </figure>
+      </section>
+
+      <footer>Campus Customs · HW4 · screenshots taken from the live local site</footer>
+    </main>
+  </body>
+</html>
