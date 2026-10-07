@@ -215,3 +215,48 @@ A record of the prompts I typed to my vibe coder (Claude Code) while working on 
 > Then I need to finish output/harness.md so it clearly explains how the whole system works. It should include the model fields in models.py and why I chose them, the tools and abilities of the agent, the safety rules, and the main system specs, including loop limits, result caps, which models are used, and how to run both the front end and the backend.
 
 **Follow-up prompt:** None needed.
+
+---
+
+## Problem 13 — Push to a Public GitHub Repository
+
+**Prompt:**
+
+> Now lets do problem 13:
+>
+> For Problem 13, I need to put the finished project inside a folder named hw4 and push it to a public GitHub repository. On Canvas, I will submit the GitHub repository URL so the graders can open and clone the project. I should not submit a zip file for this homework.
+> I need to make sure sensitive or local-only files are not included in the GitHub repo. Specifically, I should not commit my real .env file, campus_customs.db, or the product image files. I should use .gitignore to exclude them. I also need to include a .env.example file that only contains placeholder values.
+> The final hw4 folder should include:
+> hw4/
+> ├── AI_prompts.md
+> ├── requirements.txt
+> ├── .env.example
+> ├── .gitignore
+> ├── README.md
+> ├── frontend/
+> ├── backend/
+> │   ├── main.py
+> │   ├── agent.py
+> │   ├── models.py
+> │   ├── tools.py
+> │   └── prompts/
+> │       └── prompt.md
+> └── output/
+>     ├── harness.md
+>     ├── design.md
+>     ├── usability.md
+>     ├── app_check.html
+>     ├── app_check_images/
+>     └── audit_trail.json
+> The frontend/ folder contains the Vite React TypeScript app.
+> The FastAPI backend should be under backend/, and backend/main.py should still be runnable with:
+> uvicorn main:app --reload --port 8000
+> The agent itself should remain organized as four main files under backend/: prompts/prompt.md, agent.py, tools.py, and models.py.
+> The local data pack should stay outside Git and should contain:
+> data/
+> ├── campus_customs.db
+> └── products/
+> The products/ folder contains the images referenced by the catalogue in the database.
+> Finally, README.md should explain how to run both the front end and the back end after the local data pack has been placed in the project.
+
+**Follow-up prompt:** None needed.
